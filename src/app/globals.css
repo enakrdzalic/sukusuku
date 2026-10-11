@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-plex), "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
+  --color-paper: #f3ead7;
+  --color-ink: #241910;
+  --color-persimmon: #d4532b;
+  --color-indigo: #1e4d78;
+  --color-moss: #2c6b48;
+  --color-card: #fffaf2;
+  --color-line: #e4d3b4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(to right, rgb(30 77 120 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(30 77 120 / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--color-ink);
+  font-family: var(--font-plex), "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
+}
+
+.font-jp {
+  font-family: var(--font-zen), "Noto Sans CJK JP", "Noto Sans JP", var(--font-sans);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 999px;
+  padding: 0.8rem 1.1rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--color-persimmon);
+  color: var(--color-paper);
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-ink);
+}
+
+.card-scene {
+  perspective: 1200px;
+}
+
+.card-inner {
+  position: relative;
+  display: grid;
+  min-height: 22rem;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
+  background: var(--color-card);
+  padding: 1.5rem;
+  backface-visibility: hidden;
+  box-shadow: 0 16px 40px rgb(36 25 16 / 0.06);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(180deg, rgb(44 107 72 / 0.08), transparent 40%),
+    var(--color-card);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-persimmon);
+  outline-offset: 3px;
+}
